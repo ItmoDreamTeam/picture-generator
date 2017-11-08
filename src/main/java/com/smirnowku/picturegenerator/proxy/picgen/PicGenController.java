@@ -1,11 +1,10 @@
 package com.smirnowku.picturegenerator.proxy.picgen;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.InputStream;
 
 @Controller
 @RequestMapping("/picture/{width}/{height}")
@@ -25,14 +23,15 @@ public class PicGenController {
     private static final Logger log = Logger.getLogger(PicGenController.class);
 
     @GetMapping
-    public ResponseEntity<?> generate(HttpServletResponse responseToClient, @PathVariable int width, @PathVariable int height) {
+    public ResponseEntity<?> generate(HttpServletResponse responseToClient,
+                                      @PathVariable int width, @PathVariable int height) {
         log.info("generate picture request");
         try {
             HttpGet request = new HttpGet(getUrl(width, height));
-            HttpClient httpClient = HttpClients.createDefault();
+            CloseableHttpClient httpClient = HttpClients.createDefault();
             HttpResponse response = httpClient.execute(request);
-            InputStream pictureStream = response.getEntity().getContent();
-            IOUtils.copy(pictureStream, responseToClient.getOutputStream());
+            response.getEntity().writeTo(responseToClient.getOutputStream());
+            httpClient.close();
         } catch (Exception e) {
             log.warn("error", e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
