@@ -19,10 +19,11 @@ function vkUploadPicture(uploadUrl) {
     console.log("uploading picture");
 
     var formData = new FormData();
-    formData.append("photo", pictureAsBlob(), ".png");
+    formData.append("url", uploadUrl);
+    formData.append("photo", pictureAsBlob());
 
     $.ajax({
-        url: uploadUrl,
+        url: PROXY_ROOT_URL + "/vk/upload",
         method: "POST",
         data: formData,
         processData: false,

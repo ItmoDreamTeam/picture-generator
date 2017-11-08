@@ -1,5 +1,5 @@
 function getPictureURL() {
-    return "http://lorempixel.com/" + PICTURE_WIDTH + "/" + PICTURE_HEIGHT;
+    return PROXY_ROOT_URL + "/picture/" + PICTURE_WIDTH + "/" + PICTURE_HEIGHT;
 }
 
 function generatePicture() {
