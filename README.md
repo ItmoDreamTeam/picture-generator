@@ -1,1 +1,1 @@
-# picture-generator
+# Picture Generator
