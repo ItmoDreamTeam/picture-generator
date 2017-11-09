@@ -38,11 +38,11 @@ public class PictureController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getPicturesMeta() {
+    public ResponseEntity<?> getPicturesMeta(@RequestParam int limit) {
         log.info("get pictures meta request");
         List<UploadedFile> files;
         try {
-            files = pictureService.getPicturesMeta();
+            files = pictureService.getPicturesMeta(limit);
         } catch (UserNotFoundException e) {
             log.info("user not found");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

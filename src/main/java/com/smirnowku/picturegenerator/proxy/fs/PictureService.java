@@ -22,6 +22,7 @@ import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PictureService {
@@ -41,7 +42,7 @@ public class PictureService {
     @Resource
     private JsonSerializer jsonSerializer;
 
-    public List<UploadedFile> getPicturesMeta() throws IOException {
+    public List<UploadedFile> getPicturesMeta(int limit) throws IOException {
         HttpGet request = new HttpGet(String.format("%s/user/%s", rootUrl, username));
         auth.addAuthHeader(request, username, password);
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -52,7 +53,7 @@ public class PictureService {
         }
         User user = jsonSerializer.deserialize(response.getEntity().getContent(), User.class);
         httpClient.close();
-        return user.getFiles();
+        return user.getFiles().stream().limit(limit).collect(Collectors.toList());
     }
 
     public void getPicture(OutputStream outputStream, int id) throws IOException {
