@@ -3,6 +3,11 @@
     text-align: center;
 }
 
+.title {
+    margin: 70px 0 20px 0;
+    font-size: 20pt;
+}
+
 #control-panel {
     display: inline-block;
     vertical-align: top;
@@ -18,4 +23,11 @@
 
 #canvas-panel {
     display: inline-block;
+}
+
+.pic {
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+    margin: 5px;
 }

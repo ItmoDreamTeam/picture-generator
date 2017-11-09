@@ -1,11 +1,13 @@
 function pictureAsBlob() {
-    var dataURL = canvas.toDataURL();
-    var bytes = atob(dataURL.split(',')[1]);
-    var arr = new Uint8Array(bytes.length);
-    for (var i = 0; i < bytes.length; i++) {
-        arr[i] = bytes.charCodeAt(i);
+    return convertImageToBlob(canvas.toDataURL());
+}
+
+function onPictureUploadedToFs() {
+    var container = document.getElementById("pics-container");
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
     }
-    return new Blob([arr], {type: 'image/png'});
+    drawRecentPictures();
 }
 
 VK.init({apiId: VK_APP_ID});
@@ -16,3 +18,4 @@ canvas.setAttribute("width", PICTURE_WIDTH);
 canvas.setAttribute("height", PICTURE_HEIGHT);
 
 generatePicture();
+drawRecentPictures();
