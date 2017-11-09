@@ -79,9 +79,9 @@ public class PictureService {
     }
 
     private void createUser() throws IOException {
-        HttpPost request = new HttpPost(String.format("%s/signUp?username=%s&password=%s", rootUrl, username, password));
+        HttpPost request = new HttpPost(String.format("%s/signup?username=%s&password=%s", rootUrl, username, password));
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        httpClient.execute(request);
+        httpClient.execute(request).getEntity().writeTo(System.out);
         httpClient.close();
     }
 
