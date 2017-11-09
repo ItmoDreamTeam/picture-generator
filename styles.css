@@ -1,0 +1,21 @@
+* {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#control-panel {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    width: 300px;
+}
+
+.control-panel-element {
+    margin: 0 10px 10px 10px;
+    padding: 10px;
+    border: solid darkslateblue 1px;
+}
+
+#canvas-panel {
+    display: inline-block;
+}
