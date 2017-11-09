@@ -1,4 +1,4 @@
-function fsUploadPicture() {
+function fsUploadPicture(onPictureUploaded) {
     var formData = new FormData();
     formData.append("picture", pictureAsBlob());
 
@@ -9,7 +9,7 @@ function fsUploadPicture() {
         processData: false,
         contentType: false,
         success: function () {
-            alert("Successfully uploaded");
+            onPictureUploaded();
         }
     });
 }

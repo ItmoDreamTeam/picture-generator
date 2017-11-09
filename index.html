@@ -16,7 +16,7 @@
         <button onclick="vkPost()">Post Picture to VK</button>
     </div>
     <div class="control-panel-element">
-        <button onclick="fsUploadPicture()">Upload File To Server</button>
+        <button onclick="fsUploadPicture(onPictureUploadedToFs)">Upload File To Server</button>
     </div>
 </div>
 
@@ -24,6 +24,7 @@
     <canvas id="canvas" style="border: solid lightgrey 1px"></canvas>
 </div>
 
+<div class="title">Uploaded Files</div>
 <div id="pics-container"></div>
 
 <script src="script/constants.js"></script>
