@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("/picture/{width}/{height}")
+@RequestMapping("/picture/{width}/{height}/*")
 @CrossOrigin
 public class PicGenController {
 
