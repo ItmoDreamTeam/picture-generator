@@ -1,36 +1,27 @@
-function fsUpload() {
-    var username = "AwesomePictures";
-    var password = "123456";
-
-    fsCreateUser(username, password);
-
-    var picName = Date.now() + ".png";
-
+function fsUploadPicture() {
     var formData = new FormData();
-    formData.append("file", pictureAsBlob(), picName);
+    formData.append("picture", pictureAsBlob());
 
     $.ajax({
-        url: FS_ROOT_URL + "/user/" + username + "/file",
+        url: PROXY_ROOT_URL + "/fs",
         method: "POST",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("Authorization", "Basic " + btoa(username + ":" + password));
-        },
         data: formData,
         processData: false,
         contentType: false,
-
         success: function () {
             alert("Successfully uploaded");
         }
     });
 }
 
-function fsCreateUser(username, password) {
+function fsGetPicturesMeta(limit, onPictureReceived) {
     $.ajax({
-        url: FS_ROOT_URL + "/signup?username=" + username + "&password=" + password,
-        method: "POST",
+        url: PROXY_ROOT_URL + "/fs?limit=" + limit,
+        method: "GET",
         success: function (response) {
-            console.log("User created. " + response);
+            for (i = 0; i < response.length; i++) {
+                onPictureReceived(PROXY_ROOT_URL + "/fs/" + response[i].id);
+            }
         }
     });
 }
