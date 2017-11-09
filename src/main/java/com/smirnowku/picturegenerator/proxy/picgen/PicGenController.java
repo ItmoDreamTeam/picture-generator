@@ -41,6 +41,6 @@ public class PicGenController {
     }
 
     private String getUrl(int width, int height) {
-        return String.format("http://lorempixel.com/%d/%d", width, height);
+        return String.format("https://placeimg.com/%d/%d", width, height);
     }
 }
