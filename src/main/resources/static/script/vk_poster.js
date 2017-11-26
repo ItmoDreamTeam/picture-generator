@@ -23,7 +23,7 @@ function vkUploadPicture(uploadUrl) {
     formData.append("photo", pictureAsBlob());
 
     $.ajax({
-        url: PROXY_ROOT_URL + "/vk/upload",
+        url: API_ROOT + "/vk/upload",
         method: "POST",
         data: formData,
         processData: false,

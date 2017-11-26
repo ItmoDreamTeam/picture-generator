@@ -1,0 +1,164 @@
+{
+  "info": {
+    "name": "Picture Generator",
+    "_postman_id": "eb7ac67e-4aaa-af14-0d51-0f04a8e8858d",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "FS",
+      "description": "",
+      "item": [
+        {
+          "name": "Get Pictures Meta",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{root}}/api/fs?limit=10",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "fs"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Get Picture",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "pict",
+                  "value": "",
+                  "description": "",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{root}}/api/fs/7",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "fs",
+                "7"
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Picture",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "picture",
+                  "value": "",
+                  "description": "",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{root}}/api/fs",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "fs"
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Generate Picture",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "{{root}}/api/picture/640/480/",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "api",
+            "picture",
+            "640",
+            "480",
+            ""
+          ]
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Upload Picture to VK server",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "photo",
+              "value": "",
+              "description": "",
+              "type": "file"
+            },
+            {
+              "key": "url",
+              "value": "https://pu.vk.com/c841021/upload.php.......",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{root}}/api/vk/upload",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "api",
+            "vk",
+            "upload"
+          ]
+        },
+        "description": ""
+      },
+      "response": []
+    }
+  ]
+}

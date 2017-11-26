@@ -3,4 +3,4 @@ const PICTURE_HEIGHT = 480;
 const PICTURES_LIMIT = 50;
 
 const VK_APP_ID = 6252305;
-const PROXY_ROOT_URL = "https://picture-generator-proxy.herokuapp.com";
+const API_ROOT = "/api";

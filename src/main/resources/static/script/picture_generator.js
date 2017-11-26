@@ -1,5 +1,5 @@
 function getPictureURL() {
-    return PROXY_ROOT_URL + "/picture/" + PICTURE_WIDTH + "/" + PICTURE_HEIGHT + "/" + Math.random();
+    return API_ROOT + "/picture/" + PICTURE_WIDTH + "/" + PICTURE_HEIGHT + "/" + Math.random();
 }
 
 function generatePicture() {

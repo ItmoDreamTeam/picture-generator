@@ -3,7 +3,7 @@ function fsUploadPicture(onPictureUploaded) {
     formData.append("picture", pictureAsBlob());
 
     $.ajax({
-        url: PROXY_ROOT_URL + "/fs",
+        url: API_ROOT + "/fs",
         method: "POST",
         data: formData,
         processData: false,
@@ -16,11 +16,11 @@ function fsUploadPicture(onPictureUploaded) {
 
 function fsGetPicturesMeta(limit, onPictureReceived) {
     $.ajax({
-        url: PROXY_ROOT_URL + "/fs?limit=" + limit,
+        url: API_ROOT + "/fs?limit=" + limit,
         method: "GET",
         success: function (response) {
             for (i = 0; i < response.length; i++) {
-                onPictureReceived(PROXY_ROOT_URL + "/fs/" + response[i].id);
+                onPictureReceived(API_ROOT + "/fs/" + response[i].id);
             }
         }
     });
