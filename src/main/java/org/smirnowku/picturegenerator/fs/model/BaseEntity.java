@@ -1,4 +1,4 @@
-package com.smirnowku.picturegenerator.proxy.fs.model;
+package org.smirnowku.picturegenerator.fs.model;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.smirnowku.picturegenerator.proxy.vk;
+package org.smirnowku.picturegenerator.vk;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/vk/upload")
+@RequestMapping("/api/vk/upload")
 @CrossOrigin
 public class UploadPhotoController {
 

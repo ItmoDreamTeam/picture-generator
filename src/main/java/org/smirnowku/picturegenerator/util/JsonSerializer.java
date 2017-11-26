@@ -1,4 +1,4 @@
-package com.smirnowku.picturegenerator.proxy.util;
+package org.smirnowku.picturegenerator.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;

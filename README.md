@@ -1,16 +1,17 @@
-# Picture Generator Proxy
+# Picture Generator
 
-Proxy app that allows to bypass CORS for [web app](https://github.com/KirillSmirnow/picture-generator)
+* Generates random picture with random quote
+* Picture can be posted to VK or saved on the server
 
-### API
+### REST API
 
 GET:
 * /picture/{width}/{height}/\*: Random picture
-* /fs: Meta data of pictures on the FS server
-* /fs/{id}: Picture by id from FS server
+* /fs: Meta data of pictures on the FS server*
+* /fs/{id}: Picture by id from FS server*
 
 POST:
-* /fs: Upload picture onto FS server
+* /fs: Upload picture onto FS server*
 * /vk/upload: Upload photo onto VK server by the given URL
 
-FS server: https://github.com/fs-group/file-storage-server
+*FS server: https://github.com/fs-group/file-storage-server

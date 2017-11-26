@@ -1,10 +1,5 @@
-package com.smirnowku.picturegenerator.proxy.fs;
+package org.smirnowku.picturegenerator.fs;
 
-import com.smirnowku.picturegenerator.proxy.fs.exception.PictureNotFoundException;
-import com.smirnowku.picturegenerator.proxy.fs.exception.UserNotFoundException;
-import com.smirnowku.picturegenerator.proxy.fs.model.UploadedFile;
-import com.smirnowku.picturegenerator.proxy.fs.model.User;
-import com.smirnowku.picturegenerator.proxy.util.JsonSerializer;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -13,6 +8,11 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.smirnowku.picturegenerator.fs.exception.PictureNotFoundException;
+import org.smirnowku.picturegenerator.fs.exception.UserNotFoundException;
+import org.smirnowku.picturegenerator.fs.model.UploadedFile;
+import org.smirnowku.picturegenerator.fs.model.User;
+import org.smirnowku.picturegenerator.util.JsonSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.smirnowku.picturegenerator.proxy.picgen;
+package org.smirnowku.picturegenerator.picgen;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/picture/{width}/{height}/*")
+@RequestMapping("/api/picture/{width}/{height}/*")
 @CrossOrigin
 public class PicGenController {
 

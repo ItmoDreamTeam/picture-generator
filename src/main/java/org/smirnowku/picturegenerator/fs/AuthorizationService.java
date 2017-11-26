@@ -1,4 +1,4 @@
-package com.smirnowku.picturegenerator.proxy.fs;
+package org.smirnowku.picturegenerator.fs;
 
 import org.apache.http.client.methods.HttpUriRequest;
 import org.springframework.stereotype.Service;

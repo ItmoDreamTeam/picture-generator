@@ -1,4 +1,4 @@
-package com.smirnowku.picturegenerator.proxy.fs;
+package org.smirnowku.picturegenerator.fs;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
