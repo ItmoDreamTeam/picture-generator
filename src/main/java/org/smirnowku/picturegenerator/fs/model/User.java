@@ -11,8 +11,7 @@ public class User extends BaseEntity {
 
     public void setFiles(List<UploadedFile> files) {
         this.files = files;
-        this.files.sort(comparing(UploadedFile::getCreated));
-//        this.files.sort(comparing(UploadedFile::getCreated).reversed());
+        this.files.sort(comparing(UploadedFile::getCreated).reversed());
     }
 
     public String getUsername() {

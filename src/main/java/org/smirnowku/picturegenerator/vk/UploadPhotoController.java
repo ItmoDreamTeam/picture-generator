@@ -7,20 +7,23 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/vk/upload")
-@CrossOrigin
 public class UploadPhotoController {
 
-    private static final Logger log = Logger.getLogger(UploadPhotoController.class);
+    private static final Logger log = LoggerFactory.getLogger(UploadPhotoController.class);
 
     @PostMapping
     public ResponseEntity<?> upload(HttpServletResponse responseToClient,

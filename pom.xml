@@ -6,7 +6,7 @@
 
     <groupId>org.smirnowku</groupId>
     <artifactId>picturegenerator</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>0.1</version>
     <packaging>jar</packaging>
 
     <properties>

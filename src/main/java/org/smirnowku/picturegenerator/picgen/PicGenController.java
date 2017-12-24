@@ -4,19 +4,22 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/picture/{width}/{height}/*")
-@CrossOrigin
 public class PicGenController {
 
-    private static final Logger log = Logger.getLogger(PicGenController.class);
+    private static final Logger log = LoggerFactory.getLogger(PicGenController.class);
 
     @GetMapping
     public ResponseEntity<?> generate(HttpServletResponse responseToClient,
