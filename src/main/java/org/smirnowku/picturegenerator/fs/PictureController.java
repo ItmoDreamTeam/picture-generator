@@ -1,8 +1,6 @@
 package org.smirnowku.picturegenerator.fs;
 
 import org.apache.log4j.Logger;
-import org.smirnowku.picturegenerator.fs.exception.PictureNotFoundException;
-import org.smirnowku.picturegenerator.fs.exception.UserNotFoundException;
 import org.smirnowku.picturegenerator.fs.model.UploadedFile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,19 +14,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/fs")
-@CrossOrigin
 public class PictureController {
 
     private static final Logger log = Logger.getLogger(PictureController.class);
 
     @Resource
-    private PictureService pictureService;
+    private PictureService service;
 
     @PostMapping
     public ResponseEntity<?> uploadPicture(@RequestParam MultipartFile picture) {
         log.info("upload picture request");
         try {
-            pictureService.uploadPicture(picture);
+            service.uploadPicture(picture);
         } catch (IOException e) {
             log.warn("error", e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -42,8 +39,8 @@ public class PictureController {
         log.info("get pictures meta request");
         List<UploadedFile> files;
         try {
-            files = pictureService.getPicturesMeta(limit);
-        } catch (UserNotFoundException e) {
+            files = service.getPicturesMeta(limit);
+        } catch (FsException e) {
             log.info("user not found");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (IOException e) {
@@ -58,8 +55,8 @@ public class PictureController {
     public ResponseEntity<?> getPicture(HttpServletResponse responseToClient, @PathVariable int id) {
         log.info("get picture request id=" + id);
         try {
-            pictureService.getPicture(responseToClient.getOutputStream(), id);
-        } catch (PictureNotFoundException e) {
+            service.getPicture(responseToClient.getOutputStream(), id);
+        } catch (FsException e) {
             log.info("picture not found");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (IOException e) {

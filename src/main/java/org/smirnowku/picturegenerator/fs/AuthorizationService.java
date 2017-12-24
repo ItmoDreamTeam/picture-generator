@@ -1,9 +1,7 @@
 package org.smirnowku.picturegenerator.fs;
 
 import org.apache.http.client.methods.HttpUriRequest;
-import org.springframework.stereotype.Service;
 
-@Service
 public interface AuthorizationService {
 
     String authString(String username, String password);

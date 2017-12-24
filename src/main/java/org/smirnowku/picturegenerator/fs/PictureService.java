@@ -8,8 +8,6 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.smirnowku.picturegenerator.fs.exception.PictureNotFoundException;
-import org.smirnowku.picturegenerator.fs.exception.UserNotFoundException;
 import org.smirnowku.picturegenerator.fs.model.UploadedFile;
 import org.smirnowku.picturegenerator.fs.model.User;
 import org.smirnowku.picturegenerator.util.JsonSerializer;
@@ -43,13 +41,13 @@ public class PictureService {
     private JsonSerializer jsonSerializer;
 
     public List<UploadedFile> getPicturesMeta(int limit) throws IOException {
-        HttpGet request = new HttpGet(String.format("%s/user/%s", rootUrl, username));
+        HttpGet request = new HttpGet(String.format("%s/profile", rootUrl));
         auth.addAuthHeader(request, username, password);
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpResponse response = httpClient.execute(request);
         if (HttpStatus.valueOf(response.getStatusLine().getStatusCode()).is4xxClientError()) {
             httpClient.close();
-            throw new UserNotFoundException();
+            throw new FsException();
         }
         User user = jsonSerializer.deserialize(response.getEntity().getContent(), User.class);
         httpClient.close();
@@ -57,13 +55,13 @@ public class PictureService {
     }
 
     public void getPicture(OutputStream outputStream, int id) throws IOException {
-        HttpGet request = new HttpGet(String.format("%s/user/%s/file/%d", rootUrl, username, id));
+        HttpGet request = new HttpGet(String.format("%s/files/%d", rootUrl, id));
         auth.addAuthHeader(request, username, password);
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpResponse response = httpClient.execute(request);
         if (HttpStatus.valueOf(response.getStatusLine().getStatusCode()).is4xxClientError()) {
             httpClient.close();
-            throw new PictureNotFoundException();
+            throw new FsException();
         }
         response.getEntity().writeTo(outputStream);
         httpClient.close();
@@ -71,7 +69,7 @@ public class PictureService {
 
     public void uploadPicture(MultipartFile picture) throws IOException {
         createUser();
-        HttpPost request = new HttpPost(String.format("%s/user/%s/file", rootUrl, username));
+        HttpPost request = new HttpPost(String.format("%s/files", rootUrl));
         auth.addAuthHeader(request, username, password);
         request.setEntity(prepareFormData(picture));
         CloseableHttpClient httpClient = HttpClients.createDefault();
